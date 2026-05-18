@@ -1,7 +1,4 @@
 #pragma once
-#ifndef ARRAY_H
-#define ARRAY_H
-
 #include <iostream>
 
 class ArrayException {};
@@ -27,5 +24,3 @@ public:
 
     friend std::ostream& operator<<(std::ostream& out, const Array& arr);
 };
-
-#endif
