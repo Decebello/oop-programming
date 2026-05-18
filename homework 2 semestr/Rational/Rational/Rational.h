@@ -1,6 +1,4 @@
-#ifndef RATIONAL_H
-#define RATIONAL_H
-
+#pragma once
 #include <iostream>
 
 class Rational {
@@ -33,5 +31,3 @@ public:
     friend std::istream& operator >>(std::istream& in, Rational& r); 
     friend std::ostream& operator <<(std::ostream& out, const Rational& r); 
 };
-
-#endif
