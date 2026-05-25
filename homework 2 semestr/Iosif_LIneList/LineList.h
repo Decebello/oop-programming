@@ -5,8 +5,7 @@ using namespace std;
 class ListException {};
 
 template <class T>
-class ListNode
-{
+class ListNode {
     T         value;
     ListNode* next;
     ListNode(const T& val, ListNode* nxt) : value(val), next(nxt) {}
@@ -23,8 +22,7 @@ template <class T>
 ListNode<T>* ListNode<T>::getNext() { return next; }
 
 template <class T>
-class LineList
-{
+class LineList {
     ListNode<T>* head;
     int          count;
     LineList(const LineList&);
@@ -46,8 +44,7 @@ template <class T>
 LineList<T>::LineList() : head(nullptr), count(0) {}
 
 template <class T>
-LineList<T>::~LineList()
-{
+LineList<T>::~LineList() {
     while (head)
     {
         ListNode<T>* tmp = head->next;
@@ -63,23 +60,20 @@ template <class T>
 int LineList<T>::size() const { return count; }
 
 template <class T>
-void LineList<T>::insertFirst(const T& val)
-{
+void LineList<T>::insertFirst(const T& val) {
     head = new ListNode<T>(val, head);
     ++count;
 }
 
 template <class T>
-void LineList<T>::insertAfter(ListNode<T>* pos, const T& val)
-{
+void LineList<T>::insertAfter(ListNode<T>* pos, const T& val) {
     if (!pos) throw ListException();
     pos->next = new ListNode<T>(val, pos->next);
     ++count;
 }
 
 template <class T>
-void LineList<T>::deleteFirst()
-{
+void LineList<T>::deleteFirst() {
     if (!head) throw ListException();
     ListNode<T>* tmp = head->next;
     delete head;
@@ -88,8 +82,7 @@ void LineList<T>::deleteFirst()
 }
 
 template <class T>
-void LineList<T>::deleteAfter(ListNode<T>* pos)
-{
+void LineList<T>::deleteAfter(ListNode<T>* pos) {
     if (!pos || !pos->next) throw ListException();
     ListNode<T>* tmp = pos->next;
     pos->next        = tmp->next;
@@ -98,8 +91,7 @@ void LineList<T>::deleteAfter(ListNode<T>* pos)
 }
 
 template <class T>
-ostream& operator<<(ostream& out, const LineList<T>& lst)
-{
+ostream& operator<<(ostream& out, const LineList<T>& lst) {
     ListNode<T>* cur = lst.head;
     if (!cur) { out << "EMPTY"; return out; }
     while (cur) { out << cur->value << ' '; cur = cur->next; }
